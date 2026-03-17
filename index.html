@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gio Lahoud — Electrical Engineer</title>
+<meta name="description" content="Portfolio of Gio Lahoud, second-year Electrical Engineering student at UBC Okanagan specializing in PCB design and embedded systems."/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f9f8f6;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.09);
+    --border-md: rgba(0,0,0,0.15);
+    --text-primary: #1a1a18;
+    --text-secondary: #6b6b67;
+    --text-muted: #9b9b96;
+    --accent: #1a5cff;
+    --accent-light: #eef2ff;
+    --accent-border: #c7d4ff;
+    --tag-bg: #f0f0ec;
+    --tag-text: #4a4a46;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text-primary); font-size: 15px; line-height: 1.65; min-height: 100vh; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; background: rgba(249,248,246,0.9); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 56px; z-index: 100; }
+  .nav-logo { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text-primary); letter-spacing: 0.02em; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* LAYOUT */
+  .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0; }
+  section + section { padding-top: 0; }
+  .hero { padding: 6rem 0 5rem; }
+  .divider { border: none; border-top: 0.5px solid var(--border); margin: 0; }
+  .section-label { font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+
+  /* HERO */
+  .eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 1.25rem; }
+  h1 strong { font-weight: 500; }
+  .hero-desc { font-size: 16px; color: var(--text-secondary); max-width: 560px; margin-bottom: 2rem; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+  /* BUTTONS */
+  .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--text-primary); color: #fff; border: none; border-radius: var(--radius); padding: 10px 20px; font-family: var(--sans); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; transition: opacity 0.15s; }
+  .btn-primary:hover { opacity: 0.82; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--text-secondary); border: 0.5px solid var(--border-md); border-radius: var(--radius); padding: 10px 20px; font-family: var(--sans); font-size: 13px; cursor: pointer; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+  .btn-secondary:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+  /* ABOUT GRID */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .about-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
+  .about-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .about-card-value { font-size: 13.5px; color: var(--text-primary); }
+
+  /* CARDS */
+  .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; transition: border-color 0.15s; }
+  .card:hover { border-color: var(--border-md); }
+  .card:last-child { margin-bottom: 0; }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
+  .card-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.15rem; }
+  .card-meta { font-size: 11.5px; color: var(--text-muted); font-family: var(--mono); }
+
+  /* BADGES */
+  .badge { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; }
+  .badge-blue   { color: var(--accent); background: var(--accent-light); border: 0.5px solid var(--accent-border); }
+  .badge-green  { color: #276129; background: #f0faf0; border: 0.5px solid #b6ddb8; }
+  .badge-amber  { color: #7a4f00; background: #fffbee; border: 0.5px solid #f0d080; }
+  .badge-purple { color: #4a2d8a; background: #f3f0fe; border: 0.5px solid #c9bef5; }
+
+  /* BULLETS */
+  .bullet-list { list-style: none; margin: 0.75rem 0 1rem; display: flex; flex-direction: column; gap: 6px; }
+  .bullet-list li { font-size: 13.5px; color: var(--text-secondary); padding-left: 15px; position: relative; line-height: 1.65; }
+  .bullet-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.25rem; }
+  .tag { font-size: 11px; color: var(--tag-text); background: var(--tag-bg); padding: 3px 10px; border-radius: 5px; font-family: var(--mono); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .skill-group { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .skill-group-title { font-size: 12px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.75rem; }
+  .skill-list { display: flex; flex-direction: column; gap: 7px; }
+  .skill-item { font-family: var(--mono); font-size: 11.5px; color: var(--text-secondary); }
+  .skill-dot { display: inline-block; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; margin-right: 7px; vertical-align: middle; position: relative; top: -1px; }
+
+  /* CONTACT */
+  .contact-bar { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .contact-text h3 { font-size: 17px; font-weight: 500; margin-bottom: 0.25rem; }
+  .contact-text p { font-size: 13.5px; color: var(--text-secondary); }
+  .contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  footer { border-top: 0.5px solid var(--border); padding: 1.5rem 0; text-align: center; font-size: 12px; color: var(--text-muted); font-family: var(--mono); letter-spacing: 0.04em; }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-bar { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="nav-logo"><span>//</span> gio.lahoud</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow">Electrical Engineering · UBC Okanagan · Class of 2029</p>
+    <h1>Building hardware at the<br>edge of <strong>what's possible.</strong></h1>
+    <p class="hero-desc">Second-year EE student at UBC with hands-on experience designing PCBs for competitive robotics, academic research, and audio electronics. Pursuing a dual degree in Engineering and Management. Seeking hardware co-op roles in PCB design, embedded systems, or chip verification.</p>
+    <div class="hero-actions">
+      <!-- UPDATE: Replace YOUR_GITHUB_USERNAME with your actual GitHub username -->
+      <!-- UPDATE: Replace gio_lahoud_resume.pdf with your actual resume filename once uploaded -->
+      <a href="https://YOUR_GITHUB_USERNAME.github.io/portfolio/gio_lahoud_resume.pdf" class="btn-primary" target="_blank">Download Resume</a>
+      <a href="#experience" class="btn-secondary">View Work →</a>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">Background</p>
+    <p style="font-size:15px; color: var(--text-secondary); max-width: 600px; line-height:1.75;">
+      I design real hardware — from multi-rail power distribution PCBs for a full-sized hydrofoil to custom Raspberry Pi shields for audio DSP pipelines. I've worked in a university research lab on microelectronics and power electronics, and I bring both the technical depth and the collaborative instinct to contribute meaningfully on an engineering team from day one.
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-label">Institution</div>
+        <div class="about-card-value">University of British Columbia — Okanagan</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Program</div>
+        <div class="about-card-value">B.A.Sc. Electrical Engineering + M.M. Dual Degree</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Year</div>
+        <div class="about-card-value">Second Year — Expected Graduation 2029</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Seeking</div>
+        <div class="about-card-value">Hardware / EE Co-op — 2025 / 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Technical Experience</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">OK Marine Robotics — UBC</div>
+          <div class="card-meta">Electrical Team Member · Jan 2026 – Present</div>
+        </div>
+        <span class="badge badge-blue">Design Team</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Designed a multi-rail power distribution PCB featuring CAN communication, isolated DC/DC converters, and fault-tolerant power routing for a full-sized hydrofoil competition vehicle.</li>
+        <li>Developed a shield-style extension board for the STM32 Nucleo-H7, supporting system control, electrical integration, and scalable subsystem expansion.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Altium Designer</span>
+        <span class="tag">CAN Bus</span>
+        <span class="tag">Isolated DC/DC</span>
+        <span class="tag">STM32 Nucleo-H7</span>
+        <span class="tag">Power Distribution</span>
+        <span class="tag">PCB Layout</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">RF & Microwave Technology Laboratory — UBC</div>
+          <div class="card-meta">Undergraduate Research Assistant (Volunteer) · Jan 2026 – Present</div>
+        </div>
+        <span class="badge badge-purple">Research</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Designed and assembled a PCB for an electric motor and DC-DC converter system; supported hardware debugging, testing, and validation of microelectronics and power electronics subsystems.</li>
+        <li>Created RS-232 and RS-485 serial communication modules on custom PCBs to enable interfacing and diagnostic testing of lab prototype hardware.</li>
+        <li>Participated in research team meetings and technical discussions, developing ability to learn new hardware systems, document results, and contribute in a research-driven environment.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">PCB Design</span>
+        <span class="tag">RS-232 / RS-485</span>
+        <span class="tag">DC-DC Converters</span>
+        <span class="tag">Power Electronics</span>
+        <span class="tag">Hardware Debugging</span>
+        <span class="tag">Microelectronics</span>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Technical Projects</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Poly-Petal Programmable Multi-Effect Guitar Pedal</div>
+          <div class="card-meta">Feb 2026 – Apr 2026</div>
+        </div>
+        <span class="badge badge-green">PCB + DSP</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Engineered a custom Raspberry Pi 4 Shield PCB in Altium Designer, integrating ADC/DAC audio conversion, op-amp signal conditioning, and regulated power distribution for a programmable multi-effect pedal.</li>
+        <li>Integrated hardware UI components — stomp switch, potentiometers, and LCD — to enable real-time effect control and waveform visualization.</li>
+        <li>Collaborated with a multidisciplinary team to integrate audio circuitry with a DSP software pipeline, applying impedance matching and signal conditioning to ensure clean guitar signal acquisition.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Altium Designer</span>
+        <span class="tag">ADC / DAC</span>
+        <span class="tag">Op-Amp Design</span>
+        <span class="tag">Raspberry Pi 4</span>
+        <span class="tag">Signal Conditioning</span>
+        <span class="tag">Impedance Matching</span>
+        <span class="tag">DSP Integration</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Foldable RC Bicycle Prototype</div>
+          <div class="card-meta">Team Captain · Jan 2025 – Apr 2025</div>
+        </div>
+        <span class="badge badge-amber">Embedded Systems</span>
+      </div>
+      <ul class="bullet-list">
+        <li>Prototyped and developed control systems using an Arduino Nano, servo steering, and breadboards; integrated additional ICs and programmed firmware in C++.</li>
+        <li>Led the team in building the full prototype, combining 3D-printed and laser-cut components modelled in SolidWorks.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Arduino Nano</span>
+        <span class="tag">C++</span>
+        <span class="tag">Servo Control</span>
+        <span class="tag">SolidWorks</span>
+        <span class="tag">Embedded Firmware</span>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Skills & Tools</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">EDA & Design</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>Altium Designer</div>
+          <div class="skill-item"><span class="skill-dot"></span>KiCad</div>
+          <div class="skill-item"><span class="skill-dot"></span>SolidWorks</div>
+          <div class="skill-item"><span class="skill-dot"></span>MATLAB</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Programming</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>C / C++</div>
+          <div class="skill-item"><span class="skill-dot"></span>Python</div>
+          <div class="skill-item"><span class="skill-dot"></span>Embedded Firmware</div>
+          <div class="skill-item"><span class="skill-dot"></span>RS-232 / RS-485</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Hardware & Lab</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>Oscilloscopes / DMMs</div>
+          <div class="skill-item"><span class="skill-dot"></span>Soldering & Rework</div>
+          <div class="skill-item"><span class="skill-dot"></span>CAN / I2C / SPI / UART</div>
+          <div class="skill-item"><span class="skill-dot"></span>Power Electronics</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding-bottom: 3rem;">
+    <p class="section-label">Contact</p>
+    <div class="contact-bar">
+      <div class="contact-text">
+        <h3>Let's work together.</h3>
+        <p>Open to co-op roles in PCB design, embedded hardware, or chip verification.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:glahoud@student.ubc.ca" class="btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/gio-lahoud-0b3561367" class="btn-secondary" target="_blank">LinkedIn</a>
+        <!-- UPDATE: Replace YOUR_GITHUB_USERNAME with your actual GitHub username -->
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" class="btn-secondary" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    gio lahoud · ubco electrical engineering · 2025
+  </div>
+</footer>
+
+</body>
+</html>
