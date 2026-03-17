@@ -29,12 +29,12 @@
   body { font-family: var(--sans); background: var(--bg); color: var(--text-primary); font-size: 15px; line-height: 1.65; min-height: 100vh; }
 
   /* NAV */
-  border-bottom: 0.5px solid rgba(255,255,255,0.18); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 56px; z-index: 100; }
+  nav { position: sticky; top: 0; background: rgba(14,14,18,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 56px; z-index: 100; }
   .nav-logo { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text-primary); letter-spacing: 0.02em; text-decoration: none; }
   .nav-logo span { color: var(--accent); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--text-primary); }
+  .nav-logo { font-family: var(--mono); font-size: 13px; font-weight: 500; color: #eeeef0; letter-spacing: 0.02em; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
 
   /* LAYOUT */
   .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
@@ -330,7 +330,7 @@
 
 <footer>
   <div class="container">
-    gio lahoud · ubco electrical engineering · 2025
+    gio lahoud · ubc engineering
   </div>
 </footer>
 
