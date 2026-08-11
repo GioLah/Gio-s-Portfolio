@@ -158,7 +158,7 @@
       </div>
       <div class="about-card">
         <div class="about-card-label">Year</div>
-        <div class="about-card-value">Second Year — Expected Graduation 2029</div>
+        <div class="about-card-value">Third Year — Expected Graduation 2029</div>
       </div>
       <div class="about-card">
         <div class="about-card-label">Seeking</div>
@@ -177,7 +177,7 @@
       <div class="card-header">
         <div>
           <div class="card-title">OK Marine Robotics — UBC</div>
-          <div class="card-meta">Electrical Team Member · Jan 2026 – Present</div>
+          <div class="card-meta">Electrical Team Lead · Jan 2026 – Present</div>
         </div>
         <span class="badge badge-blue">Design Team</span>
       </div>
@@ -204,9 +204,10 @@
         <span class="badge badge-purple">Research</span>
       </div>
       <ul class="bullet-list">
-        <li>Designed and assembled a PCB for an electric motor and DC-DC converter system; supported hardware debugging, testing, and validation of microelectronics and power electronics subsystems.</li>
-        <li>Created RS-232 and RS-485 serial communication modules on custom PCBs to enable interfacing and diagnostic testing of lab prototype hardware.</li>
-        <li>Participated in research team meetings and technical discussions, developing ability to learn new hardware systems, document results, and contribute in a research-driven environment.</li>
+        <li>Designed and independently validated standalone PCB modules for individual subsystems — including RS-232/RS-485 serial communication and a CAN bus transceiver module with 3.3V logic-level translation — before integrating them into a combined motor and DC-DC converter control board.</li>
+        <li>Engineered the final Motor Test Bench extension board in Altium Designer for the TI F28377D, unifying the validated communication modules with protected 5V USB-C power input (TVS diode, CC pull-downs, decoupling) and 24V Anderson connector protection.</li>
+        <li>Validated the CAN bus firmware (DCAN peripheral, TJA1050 transceiver) on its own first, then integrated it into the board's power and control systems. During full-system testing, increased the firmware's interrupt rate from 500 Hz to 10 kHz to meet real-time control requirements.</li>
+        <li>Built a MATLAB App Designer GUI to support hardware-in-the-loop testing and diagnostics of the fully integrated CAN-based motor control system.</li>
       </ul>
       <div class="tags">
         <span class="tag">PCB Design</span>
